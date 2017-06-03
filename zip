@@ -3,9 +3,9 @@
 
 using namespace std;
 
-void toZip() {
-	ifstream in("in.txt");
-	ofstream out("out.txt");
+void toZip(const char* inFile, const char* outFile) {
+	ifstream in(inFile);
+	ofstream out(outFile);
 	if (!in.is_open() || !out.is_open()) return;
 	char ch, ch2, done, t;
 	done = 0;
@@ -30,9 +30,9 @@ void toZip() {
 	out.close();
 }
 
-void fromZip() {
-	ifstream in("out.txt");
-	ofstream out("in.txt");
+void fromZip(const char* inFile, const char* outFile) {
+	ifstream in(inFile);
+	ofstream out(outFile);
 	if (!in.is_open() || !out.is_open()) return;
 	char ch, ch2, done, t;
 	char s[7] = { 0, 0, 0, 0, 0, 0, 0 };
@@ -61,9 +61,13 @@ void fromZip() {
 	out.close();
 }
 
-int main(void) {
-	toZip();
-	fromZip();
+int main(int argc, char** argv) {
+	if (argc < 3) {
+		cout << "Not enough arguments" << endl;
+		return -1;
+	} 
+	toZip(argv[1], argv[2]);
+	fromZip(argv[1], argv[2]);
 	system("pause");
 	return 1;
 }
