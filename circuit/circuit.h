@@ -6,9 +6,9 @@ struct File {
 	char** In;
 };
 
-//пробегает по всему массиву
+//РїСЂРѕР±РµРіР°РµС‚ РїРѕ РІСЃРµРјСѓ РјР°СЃСЃРёРІСѓ, РёС‰РµС‚ РµРґРёРЅРёС†С‹
 void findCircuit(File* arr, int lineNum, int columnNum);
-//рекурсивно находит контур
+//СЂРµРєСѓСЂСЃРёРІРЅРѕ РЅР°С…РѕРґРёС‚ РєРѕРЅС‚СѓСЂ
 void checkRec(File* arr, int lineNum, int columnNum);
 
 #endif
