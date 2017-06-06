@@ -3,11 +3,11 @@
 
 #include "circuit.h"
 
-//читает массив из файла
+//С‡С‚РµРЅРёРµ С„Р°Р№Р»Р°
 bool readFile(const char* fileName, File* arr);
-//записывает массив в выходной файл
+//Р·Р°РїРёСЃСЊ РјР°СЃСЃРёРІР° СЃ РєРѕРЅС‚СѓСЂР°РјРё
 bool writeFile(const char* fileName, const File* arr);
-//записывает координаты во второй выходной файл
+//Р·Р°РїРёСЃСЊ РєРѕРѕСЂРґРёРЅР°С‚ РєРѕРЅС‚СѓСЂР°
 bool writeCoordinates(const char* fileName, const int line, const int column);
 
 #endif
