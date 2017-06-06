@@ -10,5 +10,7 @@ struct File {
 void findCircuit(File* arr, int lineNum, int columnNum);
 //рекурсивно находит контур
 void checkRec(File* arr, int lineNum, int columnNum);
+//проверяет лежит ли единица на контуре
+bool check(const File arr, int lineNum, int columnNum);
 
 #endif
