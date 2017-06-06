@@ -7,12 +7,13 @@ using namespace std;
 bool readFile(const char* fileName, File* arr) {
 	ifstream in(fileName);
 	if (!in.is_open()) return 0;
-	in >> arr->px;
-	in >> arr->column;
-	in >> arr->row;
+	in >> arr->px; 
+	in >> arr->column; //сохраняем в структуру количество столбцов
+	in >> arr->row; //сохраняем в структуру количество строк
 	register char ch;
 	char* p1;
-	arr->In = new char*[arr->row];
+	/* копируем в струтуру входной файл */
+	arr->In = new char*[arr->row]; 
 	for (int i = 0; i < arr->row; i++) {
 		p1 = new char[arr->column];
 		for (int j = 0; j < arr->column; j++) {
