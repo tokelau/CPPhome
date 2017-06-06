@@ -34,6 +34,7 @@ bool check(const File arr, int lineNum, int columnNum) {
 }
 
 void checkRec(File* arr, int lineNum, int columnNum) {
+	/*если нам попался контур или край массива или мы находимся за пределами фигуры, то сразу выходим из функции*/
 	if (arr->In[lineNum][columnNum] == '2') {
 		return;
 	}
@@ -46,6 +47,7 @@ void checkRec(File* arr, int lineNum, int columnNum) {
 	if (columnNum == 0 || columnNum == arr->column-1) {
 		return;
 	}
+	/*иначе перед нами единица, проверяем, лежит ли она на контуре, если да, то заменяем ее на двойку и проверяем восемь лежащих вокруг чисел*/
 	if (check(*arr, lineNum, columnNum)) {
 		arr->In[lineNum][columnNum] = '2';
 		writeCoordinates("coordinates.txt", lineNum, columnNum);
