@@ -6,80 +6,72 @@ void init(int n, int** &A);
 
 void init(int n, int** &A) {
 	A = new int*;
-	int* ptr = new int [n];
-	for(int j = 0; j < n; j++){
+	int ch = 0;
+	int* ptr = new int[n];
+	for (int j = 0; j < n; j++) {
 		for (int i = 0; i < n; i++) {
-			ptr[i] = 6 - i;
+			ptr[i] = i;
+			//cout << ch;
 		}
 		A[j] = new int;
 		A[j] = ptr;
 	}
 	for (int i = 0; i < n; i++) {
 		for (int k = 0; k < n; k++) {
-			cout<<A[i][k]<<" ";
+			cout << A[i][k] << " ";
 		}
-		cout<<endl;
+		cout << endl;
 	}
-	cout<<endl;
-	cout<<endl;
+	cout << endl;
+	cout << endl;
 }
 
-//столбцы
-int searchC(int n, int** &A){
-	static int line = 0;
-	int max = A[0][++line];
-	for (int i = line; i < n; i++){
-		for (int k = 0; k < n; k++){
-			if (A[k][line] > max) max = A[k][line];
-		}
-	}
-	return max;
-} 
+//void search(int n, int** &A) {
+//	static int line = 0;
+//	if (line == n-1) return;
+//	int max = A[line][line];
+//	int row = line;
+//	int column = line;
+//	int *ptr = new int[n];
+//	ptr = A[row];
+//	for (int i = line; i < n; i++) {
+//		for (int k = line; k < n; k++) {
+//			if (A[i][k] < max) {
+//				max = A[i][k];
+//				row = i;
+//				column = k;
+//			}
+//		}
+//	}
+//	//cout << row << " " << column << endl;
+//	//cout << line<<endl;
+//	//A[line] = A[row];
+//	//A[row] = ptr;
+//	int swap;
+//	for (int i = line; i < n; i++) {
+//		cout << line << " "<<column<<endl;
+//		swap = A[i][line];
+//		A[i][line] = A[i][column];
+//		A[i][column] = swap;
+//	}
+//	cout << endl;
+//	++line;
+//	search(n, A);
+//}
 
-//строки
-int searchR(int n, int** &A){
-	static int line = 0;
-	int max = A[++line][0];
-	for (int i = line; i < n; i++){
-		for (int k = 0; k < n; k++){
-			if (A[line][k] > max) max = A[line][k];
-		}
-	}
-	return max;
-} 
-
-void search(int n, int** &A) {
-	static int line = 0;
-	if (line == n) return;
-	int max = A[line][line];
-	int row = line;
-	int column = line;
-	int *ptr = new int[n];
-	ptr = A[row];
-	for (int i = ++line; i < n; i++){
-		for (int k = line; k < n; k++){
-			if (A[i][k] < max) {
-				max = A[i][k];
-				row = i;
-				column = k;
-			}
-		}	
-	}
-	A[line-1] = A[row];
-	A[row] = ptr;
-	for(int i = line - 1; i < n; i++){
-		ptr[0] = A[i][column];
-	}
-	search(n, A);
-}
-
-int main(void){
+int main(void) {
 	int n;
-	cout<<"Enter n: ";
-	cin>>n;
+	cout << "Enter n: ";
+	cin >> n;
 	int** A;
 	init(n, A);
-	search(n, A);
-	system("pause");
+	//search(n, A);
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < n; k++) {
+			cout << A[i][k] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
 	return 1;
 }
