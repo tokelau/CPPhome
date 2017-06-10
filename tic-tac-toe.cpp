@@ -4,7 +4,8 @@ using namespace std;
 
 /*функция проверки хода первого игрока*/
 bool check_gamer1(int arr[3][3][3][3], int x, int y) {
-	int count = 0;
+	int count = 0; //переменная, которая отвечает за количество крестиков в ряду, если она равна 3, то игрок победил
+	/*с помощью четырех циклов проверяем есть ли по горизонтали, вертикали или диагонали три символа подряд
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			if (arr[x][i][y][j] == 1) {
@@ -58,6 +59,7 @@ bool check_gamer1(int arr[3][3][3][3], int x, int y) {
 
 /*функция проверки хода второго игрока*/
 bool check_gamer2(int arr[3][3][3][3], int x, int y) {
+	//логика этой функции аналогчна, только проверяет она нолики
 	int count = 0;
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -111,6 +113,7 @@ bool check_gamer2(int arr[3][3][3][3], int x, int y) {
 
 /*ход первого игрока*/
 void enter_gamer1(int arr[3][3][3][3], int *x, int *y) {
+	//выводим тот массив, который имеем на данный момент
 	for (int i1 = 0; i1 < 3; i1++) {
 		for (int i2 = 0; i2 < 3; i2++) {
 			cout << " ";
@@ -125,7 +128,9 @@ void enter_gamer1(int arr[3][3][3][3], int *x, int *y) {
 		cout << "\n";
 	}
 	int i, j;
+	//просим ввести координаты квадрата
 	cout << "the coordinates of the square is " << *x << " " << *y << endl;
+	//просим ввести координаты точки и проверяем ввод на правильность
 	do {
 		cout << "enter the coordinates of the point: ";
 		cin >> i >> j;
@@ -142,6 +147,7 @@ void enter_gamer1(int arr[3][3][3][3], int *x, int *y) {
 
 /*ход второго игрока*/
 void enter_gamer2(int arr[3][3][3][3], int *x, int *y) {
+	//логика функции аналогична, только вводятся другие символы
 	for (int i1 = 0; i1 < 3; i1++) {
 		for (int i2 = 0; i2 < 3; i2++) {
 			cout << " ";
