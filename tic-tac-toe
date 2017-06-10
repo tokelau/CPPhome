@@ -1,7 +1,8 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
+/*функция проверки хода первого игрока*/
 bool check_gamer1(int arr[3][3][3][3], int x, int y) {
 	int count = 0;
 	for (int i = 0; i < 3; i++) {
@@ -54,6 +55,8 @@ bool check_gamer1(int arr[3][3][3][3], int x, int y) {
 		return true;
 	}
 }
+
+/*функция проверки хода второго игрока*/
 bool check_gamer2(int arr[3][3][3][3], int x, int y) {
 	int count = 0;
 	for (int i = 0; i < 3; i++) {
@@ -106,6 +109,7 @@ bool check_gamer2(int arr[3][3][3][3], int x, int y) {
 	}
 }
 
+/*ход первого игрока*/
 void enter_gamer1(int arr[3][3][3][3], int *x, int *y) {
 	for (int i1 = 0; i1 < 3; i1++) {
 		for (int i2 = 0; i2 < 3; i2++) {
@@ -135,6 +139,8 @@ void enter_gamer1(int arr[3][3][3][3], int *x, int *y) {
 	*x = i;
 	*y = j;
 }
+
+/*ход второго игрока*/
 void enter_gamer2(int arr[3][3][3][3], int *x, int *y) {
 	for (int i1 = 0; i1 < 3; i1++) {
 		for (int i2 = 0; i2 < 3; i2++) {
@@ -166,6 +172,8 @@ void enter_gamer2(int arr[3][3][3][3], int *x, int *y) {
 }
 
 int main(void) {
+	/*создаем массив 4 на 4, у каждой клетки будет 4 координаты, две отвечают за местоположение квадрата, в котором находится 
+	эта клетка, две - за координаты этой клетки внутр квадрата, пустые клетки заполняем символом 8*/
 	int arr[3][3][3][3]; 
 		for (int i2 = 0; i2 < 3; i2++) {
 			for (int i3 = 0; i3 < 3; i3++) {
@@ -174,20 +182,23 @@ int main(void) {
 				}
 			}
 		}
-	}
-	int x=0, y = 0;
+	} 
+	/* логика программы такова: инициализируем начальные позиции, начальный результат (еще никто не победил -> false), далее 
+	организуем бесконечный цикл, в котором по очереди ходит первый игрок, проверяется его ход, если он не победил, то ходит 
+	второй игрок, проверяется его ход и если он не победил, то все начинается сначала и далее выводится конечный результат*/
+	int x = 0, y = 0;
 	bool result = false;
 	do {
-		enter_gamer1(arr, &x, &y);
-		result = check_gamer1(arr, x, y);
-		if (result == true) {
+		enter_gamer1(arr, &x, &y); //ход первого игрока
+		result = check_gamer1(arr, x, y); //проверка хода первого игрока
+		if (result == true) { //выходим из цикла, если первый игрок подебил
 			cout << "the first player won!";
 			break;
 		}
-		enter_gamer2(arr, &x, &y);
-		result = check_gamer2(arr, x, y);
-		if (result == true) {
-			cout << "the second player won!";
+		enter_gamer2(arr, &x, &y); //ход второго игрока
+		result = check_gamer2(arr, x, y); //проверка хода второго игрока
+		if (result == true) { //выходим из цикла, если первый игрок победил
+			cout << "the second player won!"; 
 			break;
 		}
 	} while (true);
