@@ -11,26 +11,26 @@ void replacement(const char* fileName) {
 		return;
 	}
 	char ch;
-	int i = 0, count = 0;
-	do {
+	int count = 0;
+	do { //читаем файл первы раз и считам количество открывающих скобочек
 		ch = in.get();
 		if (ch == '(') count++;
 	} while (!in.eof());
-	in.clear();
-	in.seekg(0, ios::beg);
-	do {
+	in.clear(); //очищаем входной поток
+	in.seekg(0, ios::beg); //устанавливаем курсор на первый символ
+	do { //пробегаем по файлу второй раз и заменяем скобочки
 		ch = in.get();
 		if ((int)ch == -1) {
 			break;
 		}
-		if (ch == '(') {
+		if (ch == '(') { 
 			if (count > 2) {
 				ch = '{';
 			}
 			else if (count == 2) {
 				ch = '[';
 			}
-			count--;
+			count--; 
 		}
 		if (ch == ')') {
 			if (count == 1) {
