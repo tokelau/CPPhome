@@ -3,7 +3,7 @@
 using namespace std;
 
 void sort(int* L, int m){
-	/*сортировка по возрастанию*/
+	/*СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ*/
 	int k;
 	for (int i = 0; i < m - 1; i++) {
 		for (int j = i + 1; j < m; j++) {
@@ -14,7 +14,7 @@ void sort(int* L, int m){
 			}
 		}
 	}
-	/*отбрасываем лишние значения*/
+	/*РѕС‚Р±СЂР°СЃС‹РІР°РµРј Р»РёС€РЅРёРµ Р·РЅР°С‡РµРЅРёСЏ*/
 	int* result = new int[m];
 	for (int i = 0; i < m; i++) {
 		result[i] = -1;
@@ -26,7 +26,7 @@ void sort(int* L, int m){
 		}
 		else k--;
 	} 
-	/*выводим результат*/
+	/*РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚*/
 	if (result[1] == -1) {
 		cout << "Arr is empty" << endl;
 		return;
