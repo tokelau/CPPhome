@@ -4,6 +4,8 @@ using namespace std;
 
 int* FIB_function();
 
+
+/*функция*/
 int* FIB_fuction(int n) {
 	int* arr = new int[n];
 	arr[0] = arr[1] = 1;
