@@ -9,7 +9,12 @@ int N = 17;
 char* str = new char[N];
 char arr[] = "Привет, мир!";
 
-for (int i = 0; i < 16; i++)
+int N = 12;
+char* str = new char[N];
+char* arr = "Привет, мир!";
+
+for (int i = 0; i < N; i++)
   str[i] = arr[i];
+str[N] = '\0';
 
 str[9] = 'э';
