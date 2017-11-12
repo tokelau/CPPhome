@@ -13,6 +13,7 @@ class Room{
 public:
 	Room();
 	Room(int n, float w, float l, float h);
+	~Room();
 	int n;
 	Window* mywind;
 	float width, length, heigh;
