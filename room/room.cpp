@@ -14,6 +14,10 @@ Room::Room(int nw, float w, float l, float h){
 	InitWidow(n);
 }
 
+Room::~Room() {
+	delete[] mywind;
+}
+
 float Room::CalcRoom(){
 	float sumSqr = 0.0;
 	for(int i = 0; i < n; i++){
