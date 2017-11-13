@@ -6,17 +6,20 @@ public:
 	Date();
 	Date(char * d);
 	Date(int d, int m, int y);
-	unsigned int day, month, year;
 	/*расстояние от d2 до экземпляра, который вызвал функцию*/
 	int dist(Date d2);
 	/*вывод дня недели*/
 	char* dayWeek();
 	/*прибавит дни*/
 	Date& operator += (int days);
-	Date& operator = (const Date& d);
 	Date operator +(int days);
+	/*вычтет дни*/
+	Date& operator -= (int days);
+	Date operator - (int days);
+	Date& operator = (const Date& d);
 	friend std::ostream& operator <<(std::ostream& out, const Date& d);
 private:
+	unsigned int day, month, year;
 	unsigned int date;
 	char* dayOfWeek[7];
 	int dayInMonth[12];
