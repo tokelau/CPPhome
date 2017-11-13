@@ -7,11 +7,11 @@ public:
 	Date(char * d);
 	Date(int d, int m, int y);
 	unsigned int day, month, year;
-	/*расстояние от d2 до экземпляра, который вызвал функцию*/
+	/*СЂР°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ d2 РґРѕ СЌРєР·РµРјРїР»СЏСЂР°, РєРѕС‚РѕСЂС‹Р№ РІС‹Р·РІР°Р» С„СѓРЅРєС†РёСЋ*/
 	int dist(Date d2);
-	/*вывод дня недели*/
+	/*РІС‹РІРѕРґ РґРЅСЏ РЅРµРґРµР»Рё*/
 	char* dayWeek();
-	/*прибавит дни*/
+	/*РїСЂРёР±Р°РІРёС‚ РґРЅРё*/
 	Date& operator += (int days);
 	Date& operator = (const Date& d);
 	Date operator +(int days);
