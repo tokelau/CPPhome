@@ -4,13 +4,48 @@
 //using namespace std;
 
 Date::Date(){
-	day = 1;
-	month = 1;
-	year = 1900;
+	day = 0, month = 0, year = 0;
+	long int buf = 0;
+	std::cout << "Input day: ";
+	std::cin >> buf;
+	while (day == 0) {
+		if (buf > 0 && buf < 32) {
+			day = buf;
+		}
+		else {
+			std::cout << "Error! Input day: ";
+			std::cin >> buf;
+		}
+	}
+	std::cout << std::endl;
+	std::cout << "Input month: ";
+	std::cin >> buf;
+	while (month == 0) {
+		if (buf > 0 && buf < 13) {
+			month = buf;
+		}
+		else {
+			std::cout << "Error! Input month: ";
+			std::cin >> buf;
+		}
+	}
+	std::cout << std::endl;
+	std::cout << "Input year: ";
+	std::cin >> buf;
+	while (year == 0) {
+		if (buf >= 0) {
+			year = buf;
+		}
+		else {
+			std::cout << "Error! Input year: ";
+			std::cin >> buf;
+		}
+	}
+	std::cout << std::endl;
 	initWeek();
 	initMonth();
-	initDay();
 	initYear();
+	initDay();
 }
 
 Date::Date(char* d){
@@ -41,8 +76,8 @@ Date::Date(char* d){
 	}
 	initWeek();
 	initMonth();
-	initDay();
 	initYear();
+	initDay();
 }
 
 Date::Date(int d, int m, int y){
@@ -51,8 +86,8 @@ Date::Date(int d, int m, int y){
 	year = y;
 	initWeek();
 	initMonth();
-	initDay();
 	initYear();
+	initDay();
 }
 
 int Date::dist(Date d2){
@@ -106,17 +141,40 @@ Date Date::operator+(int days) {
 	return res;
 }
 
+Date& Date::operator -= (int days) {
+	while (days > 0) {
+		days--;
+		if (day == dayInMonth[month - 1]) {
+			day = dayInMonth[month - 1];
+			if (month == 1) {
+				month = 12;
+				year -= 1;
+				dayInMonth[1] = (year % 400 == 0 ? 29 : ((year % 4 == 0 && year % 100 != 0) ? 29 : 28));
+			}
+			else month++;
+		}
+		else day--;
+	}
+	return *this;
+}
+
+Date Date::operator - (int days) {
+	Date res(*this);
+	res -= days;
+	return res;
+}
+
 void Date::initWeek() {
 	for (int i = 0; i < 7; i++) {
 		dayOfWeek[i] = new char[12];
 	}
-	dayOfWeek[0] = "Tuesday";
-	dayOfWeek[1] = "Wednesday";
-	dayOfWeek[2] = "Thursday";
-	dayOfWeek[3] = "Friday";
-	dayOfWeek[4] = "Saturday";
-	dayOfWeek[5] = "Sunday";
-	dayOfWeek[6] = "Monday";
+	dayOfWeek[0] = "Sunday";
+	dayOfWeek[1] = "Monday";
+	dayOfWeek[2] = "Tuesday";
+	dayOfWeek[3] = "Wednesday";
+	dayOfWeek[4] = "Thursday";
+	dayOfWeek[5] = "Friday";
+	dayOfWeek[6] = "Saturday";
 
 }
 
@@ -140,8 +198,11 @@ void Date::initDay() {
 void Date::initYear() {
 	if (year >= 0 && year <= 20) {
 		year += 2000;
+		dayInMonth[1] = (year % 400 == 0 ? 29 : ((year % 4 == 0 && year % 100 != 0) ? 29 : 28));
 	}
 	if (year > 20 && year < 100) {
 		year += 1900;
+		dayInMonth[1] = (year % 400 == 0 ? 29 : ((year % 4 == 0 && year % 100 != 0) ? 29 : 28));
+		//std::cout << dayInMonth[1] << std::endl;
 	}
 }
