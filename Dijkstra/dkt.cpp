@@ -2,26 +2,26 @@
 
 void initVector(vector<vector<pair<int, int>>> &g) {
 	setlocale(LC_ALL, "rus");
-	int n = 0;//кол-во вершин
+	int n = 0;//РєРѕР»-РІРѕ РІРµСЂС€РёРЅ
 	//vector<vector<pair<int, int>>> g;
-	cout << "1 - протестировать граф с 6 вершинами" << endl;
-	cout << "2 - протестировать граф с 9 вершинами" << endl;
-	cout << "3 - свой граф" << endl;
+	cout << "1 - РїСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РіСЂР°С„ СЃ 6 РІРµСЂС€РёРЅР°РјРё" << endl;
+	cout << "2 - РїСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РіСЂР°С„ СЃ 9 РІРµСЂС€РёРЅР°РјРё" << endl;
+	cout << "3 - СЃРІРѕР№ РіСЂР°С„" << endl;
 	cin >> n;
 	while (n < 0 && n > 3) {
-		cout << "1 - протестировать граф с 9 вершинами" << endl;
-		cout << "2 - протестировать граф с 6 вершинами" << endl;
-		cout << "3 - свой граф" << endl;
+		cout << "1 - РїСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РіСЂР°С„ СЃ 9 РІРµСЂС€РёРЅР°РјРё" << endl;
+		cout << "2 - РїСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РіСЂР°С„ СЃ 6 РІРµСЂС€РёРЅР°РјРё" << endl;
+		cout << "3 - СЃРІРѕР№ РіСЂР°С„" << endl;
 		cin >> n;
 	}
 	if (n == 1) {
-		int n = 6;//кол-во вершин
+		int n = 6;//РєРѕР»-РІРѕ РІРµСЂС€РёРЅ
 		g.resize(n);
 		for (int i = 0; i < n; i++) {
 			g[i].resize(n);
 		}
 		for (int i = 0; i < n; i++) {
-			/*!!!обработчик ошибок*/
+			/*!!!РѕР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє*/
 			for (int j = 0; j < n; j++) {
 				g[i][j].first = j;
 				g[i][j].second = INF;
@@ -43,13 +43,13 @@ void initVector(vector<vector<pair<int, int>>> &g) {
 		g[4][5].second = 4;
 	} 
 	if (n == 2) {
-		int n = 9;//кол-во вершин
+		int n = 9;//РєРѕР»-РІРѕ РІРµСЂС€РёРЅ
 		g.resize(n);
 		for (int i = 0; i < n; i++) {
 			g[i].resize(n);
 		}
 		for (int i = 0; i < n; i++) {
-			/*!!!обработчик ошибок*/
+			/*!!!РѕР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє*/
 			for (int j = 0; j < n; j++) {
 				g[i][j].first = j;
 				g[i][j].second = INF;
@@ -82,7 +82,7 @@ void initVector(vector<vector<pair<int, int>>> &g) {
 		g[7][8].second = 15;
 	}
 	if (n == 3) {
-		cout << "Введите количество вершин";
+		cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІРµСЂС€РёРЅ";
 		cin >> n;
 		while (n < 0) {
 			cin >> n;
@@ -92,10 +92,10 @@ void initVector(vector<vector<pair<int, int>>> &g) {
 			g[i].resize(n);
 		}
 		for (int i = 0; i < n; i++) {
-			/*!!!обработчик ошибок*/
+			/*!!!РѕР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє*/
 			for (int j = 0; j < n; j++) {
 				g[i][j].first = j;
-				cout << "Введите вес ребра, идущего из вершины " << i << "в вершину " << j << "(если ребра нет, то введите 0): ";
+				cout << "Р’РІРµРґРёС‚Рµ РІРµСЃ СЂРµР±СЂР°, РёРґСѓС‰РµРіРѕ РёР· РІРµСЂС€РёРЅС‹ " << i << "РІ РІРµСЂС€РёРЅСѓ " << j << "(РµСЃР»Рё СЂРµР±СЂР° РЅРµС‚, С‚Рѕ РІРІРµРґРёС‚Рµ 0): ";
 				cin >> g[i][j].second;
 			}
 		}
@@ -104,13 +104,13 @@ void initVector(vector<vector<pair<int, int>>> &g) {
 }
 
 void findWay(vector<vector<pair<int, int>>> g){
-	int s = 0; //стартовая вершина
-	vector<int> d(g.size(), INF), p(g.size()); //веса вершин и вес ребер
+	int s = 0; //СЃС‚Р°СЂС‚РѕРІР°СЏ РІРµСЂС€РёРЅР°
+	vector<int> d(g.size(), INF), p(g.size()); //РІРµСЃР° РІРµСЂС€РёРЅ Рё РІРµСЃ СЂРµР±РµСЂ
 	d[s] = 0;
-	vector<bool> u(g.size(), false); //отметка вершин
+	vector<bool> u(g.size(), false); //РѕС‚РјРµС‚РєР° РІРµСЂС€РёРЅ
 	for(unsigned int i = 0; i < g.size(); i++){
 		int v = -1;
-		/*цикл по вершинам*/
+		/*С†РёРєР» РїРѕ РІРµСЂС€РёРЅР°Рј*/
 		for (unsigned int j = 0; j < g.size(); j++) {
 			if (!u[j] && (v == -1 || d[j] < d[v])) {
 				v = j;
@@ -121,7 +121,7 @@ void findWay(vector<vector<pair<int, int>>> g){
 		}
 		u[v] = true;
 		if (v == -1) continue;
-		/*цикл по ребрам*/
+		/*С†РёРєР» РїРѕ СЂРµР±СЂР°Рј*/
 		for(unsigned int j = 0; j < g[v].size(); j++){
 			int to = g[v][j].first;
 			int len = g[v][j].second;
