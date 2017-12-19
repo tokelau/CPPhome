@@ -24,6 +24,7 @@ public:
 	friend std::ostream& operator <<(std::ostream& out, const std::string& s);
 protected:
 	friend class Graph;
+	friend class BFS;
 	friend class DFS;
 };
 
