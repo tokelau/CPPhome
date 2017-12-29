@@ -4,12 +4,13 @@
 
 using namespace std;
 
-int blockSize = 53; //����������� ������ �����
+int blockSize = 53; //èçíà÷àëüíûé ðàçìåð áëîêà
 int idSize = 1;
 unsigned char id = 0;
 unsigned char id_1 = 0;
 unsigned char id_2 = 0;
 
+/*кодируем первый байт*/
 bool firstLevel(const char* infile, const char* outFile) {
 	ifstream in(infile);
 	ofstream out(outFile, ios::app);
@@ -17,7 +18,7 @@ bool firstLevel(const char* infile, const char* outFile) {
 
 	char* block = new char[blockSize + 1];
 
-	/*�������� �� 128*/
+	/*çàìåíèòü íà 128*/
 	while (!in.eof() && id != RANK) {
 		for (int i = 0; i < 54; i++) {
 			block[i] = 0;
@@ -27,7 +28,8 @@ bool firstLevel(const char* infile, const char* outFile) {
 		out.write(block, 54);
 		//cout << in.tellg() << endl;
 	}
-
+	
+	/*одного байта нам не хватило, берем второй*/
 	if (!in.eof()) {
 		blockSize--; //52
 		secondLevel(in, out);
@@ -37,12 +39,14 @@ bool firstLevel(const char* infile, const char* outFile) {
 	return 1;
 }
 
+/*кодируем второй байт*/
 void secondLevel(ifstream& in, ofstream& out) {
 	char* block = new char[blockSize + 2]; //54
 	for (int i = 0; i < 54; i++) {
 		block[i] = 0;
 	}
 	
+	/*пока первый бит этого байта меньше единицы*/
 	for (id_1; !in.eof() && id_1 < RANK;) {
 		while (!in.eof() && id != RANK*2) {
 			for (int i = 0; i < 54; i++) {
@@ -62,6 +66,7 @@ void secondLevel(ifstream& in, ofstream& out) {
 			id = RANK;
 		}
 	}
+	/*второго байта нам не хватило, берем третий*/
 	if (!in.eof()) {
 		id_1 = RANK;
 		id = RANK;
@@ -72,6 +77,7 @@ void secondLevel(ifstream& in, ofstream& out) {
 	//cout << "It's okay" << endl;
 }
 
+/*кодируем третий байт*/
 void thirdLevel(ifstream& in, ofstream& out) {
 	char* block = new char[blockSize + 3]; //54
 	for (int i = 0; i < 54; i++) {
