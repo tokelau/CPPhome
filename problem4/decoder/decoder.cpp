@@ -29,6 +29,11 @@ bool decoder(const char* inFile, const char* outFile) {
 			block[i] = in.get();
 			count++;
 		}
+		/*нужно для корректной работы*/
+		if (count == size - 1) {
+			char ch = in.get();
+			block[53] = ch;
+		}
 		/*вставляем в массив данные по полученному идентификатору*/
 		m.insert(getData(block));
 		//cout << block << endl;
